@@ -90,9 +90,14 @@
 
       // Check for scrolling positioned container.
       var scrollOffset = 0;
+      var scrollXOffset = 0;
       var wrapper = origin.parent();
       if (!wrapper.is('body') && wrapper[0].scrollHeight > wrapper[0].clientHeight) {
         scrollOffset = wrapper[0].scrollTop;
+      }
+
+      if (!wrapper.is('body') && wrapper[0].scrollWidth > wrapper[0].clientWidth) {
+        scrollXOffset = wrapper[0].scrollLeft;
       }
 
 
@@ -131,11 +136,38 @@
       }
 
       // Position dropdown
-      activates.css({
-        position: 'absolute',
-        top: origin.position().top + verticalOffset + scrollOffset,
-        left: leftPosition
+      // activates.css({
+      //   position: 'absolute',
+      //   top: origin.position().top + verticalOffset + scrollOffset,
+      //   left: leftPosition
+      // });
+
+      var fixedParents = activates.parents().filter(function () {
+        return $(this).css('position') === 'fixed';
       });
+      var msie = window.navigator.userAgent.indexOf("MSIE ") !== -1 ||
+        !!navigator.userAgent.match(/Trident.*rv\:11\./);
+      if (fixedParents.length > 0 && !msie) {
+        var fixedOffset = fixedParents.get().reduce(function (acc, ancestor) {
+          acc.top += $(ancestor).offset().top;
+          acc.left += $(ancestor).offset().left;
+          return acc;
+        }, {
+          top: 0,
+          left: 0
+        });
+        activates.css({
+          position: 'fixed',
+          top: origin.offset().top - fixedOffset.top + verticalOffset + scrollOffset,
+          left: origin.offset().left - fixedOffset.left + scrollXOffset
+        });
+      } else {
+        activates.css({
+          position: 'absolute',
+          top: origin.position().top + verticalOffset + scrollOffset,
+          left: leftPosition + scrollXOffset
+        });
+      }
 
 
       // Show dropdown
