@@ -1,5 +1,5 @@
 /*!
- * Materialize v0.97.6 (http://materializecss.com)
+ * Materialize vundefined (http://materializecss.com)
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
@@ -4629,14 +4629,14 @@ small {
   z-index: 2;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
   color: #ffab40;
   margin-right: 20px;
   transition: color .3s ease;
   text-transform: uppercase;
 }
 
-.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
   color: #ffd8a6;
 }
 
@@ -4762,7 +4762,6 @@ small {
 }
 
 .tabs .tab {
-  -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
@@ -4860,8 +4859,7 @@ small {
 .btn.disabled, .disabled.btn-large,
 .btn-floating.disabled,
 .btn-large.disabled,
-.btn:disabled
-.btn-large:disabled, .btn-large:disabled .btn-large:disabled,
+.btn:disabled .btn-large:disabled, .btn-large:disabled .btn-large:disabled,
 .btn-floating:disabled {
   background-color: #DFDFDF !important;
   box-shadow: none;
@@ -4872,8 +4870,7 @@ small {
 .btn.disabled *, .disabled.btn-large *,
 .btn-floating.disabled *,
 .btn-large.disabled *,
-.btn:disabled
-.btn-large:disabled *, .btn-large:disabled .btn-large:disabled *,
+.btn:disabled .btn-large:disabled *, .btn-large:disabled .btn-large:disabled *,
 .btn-floating:disabled * {
   pointer-events: none;
 }
@@ -4881,8 +4878,7 @@ small {
 .btn.disabled:hover, .disabled.btn-large:hover,
 .btn-floating.disabled:hover,
 .btn-large.disabled:hover,
-.btn:disabled
-.btn-large:disabled:hover, .btn-large:disabled .btn-large:disabled:hover,
+.btn:disabled .btn-large:disabled:hover, .btn-large:disabled .btn-large:disabled:hover,
 .btn-floating:disabled:hover {
   background-color: #DFDFDF !important;
   color: #9F9F9F !important;
@@ -6677,8 +6673,7 @@ input[type=range]:focus::-ms-fill-upper {
           backface-visibility: hidden;
   overflow-y: auto;
   will-change: transform;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
   -webkit-transform: translateX(-105%);
           transform: translateX(-105%);
 }
